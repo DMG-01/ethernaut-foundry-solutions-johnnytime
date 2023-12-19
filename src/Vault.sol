@@ -10,11 +10,11 @@ contract Vault {
 
   constructor(bytes32 _password) {
     locked = true;
-    password = _password;
+    password = keccak256(abi.encodePacked(_password));
   }
 
   function unlock(bytes32 _password) public {
-    if (password == _password) {
+    if (password == keccak256.abi.encode(_password)) {
       locked = false;
     }
   }
